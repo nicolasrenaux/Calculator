@@ -554,8 +554,12 @@ video {
   --tw-contain-style:  ;
 }
 
-.mb-6 {
-  margin-bottom: 1.5rem;
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.row-span-2 {
+  grid-row: span 2 / span 2;
 }
 
 .flex {
@@ -570,34 +574,20 @@ video {
   height: 25%;
 }
 
-.h-screen {
-  height: 100vh;
-}
-
 .h-3\/4 {
   height: 75%;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .w-screen {
   width: 100vw;
 }
 
-.max-w-max {
-  max-width: -moz-max-content;
-  max-width: max-content;
-}
-
-.max-w-fit {
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-}
-
-.max-w-sm {
-  max-width: 24rem;
-}
-
-.max-w-80 {
-  max-width: 20rem;
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .items-end {
@@ -616,8 +606,16 @@ video {
   justify-content: center;
 }
 
+.gap-4 {
+  gap: 1rem;
+}
+
 .overflow-hidden {
   overflow: hidden;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .bg-black {
@@ -625,19 +623,9 @@ video {
   background-color: rgb(28 28 28 / var(--tw-bg-opacity));
 }
 
-.bg-offwhite {
+.bg-gray-dark {
   --tw-bg-opacity: 1;
-  background-color: rgb(245 245 244 / var(--tw-bg-opacity));
-}
-
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-orange {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 149 0 / var(--tw-bg-opacity));
+  background-color: rgb(80 80 80 / var(--tw-bg-opacity));
 }
 
 .bg-gray-light {
@@ -645,17 +633,18 @@ video {
   background-color: rgb(212 212 210 / var(--tw-bg-opacity));
 }
 
-.bg-gray-dark {
+.bg-offwhite {
   --tw-bg-opacity: 1;
-  background-color: rgb(80 80 80 / var(--tw-bg-opacity));
+  background-color: rgb(245 245 244 / var(--tw-bg-opacity));
+}
+
+.bg-orange {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 149 0 / var(--tw-bg-opacity));
 }
 
 .p-4 {
   padding: 1rem;
-}
-
-.pr-4 {
-  padding-right: 1rem;
 }
 
 .pb-6 {
@@ -667,31 +656,27 @@ video {
   line-height: 2rem;
 }
 
-.font-bold {
-  font-weight: 700;
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
-.font-semibold {
-  font-weight: 600;
+.font-bold {
+  font-weight: 700;
 }
 
 .font-medium {
   font-weight: 500;
 }
 
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-pureblack {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(28 28 28 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 @media (min-width: 1024px) {
