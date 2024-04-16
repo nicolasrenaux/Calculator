@@ -620,6 +620,10 @@ video {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .items-end {
   align-items: flex-end;
 }
@@ -718,8 +722,33 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .md\:w-2\/3 {
+    width: 66.666667%;
+  }
+
+  .md\:w-full {
+    width: 100%;
+  }
+
   .md\:min-w-44 {
     min-width: 11rem;
+  }
+
+  .md\:min-w-full {
+    min-width: 100%;
+  }
+
+  .md\:rounded-2xl {
+    border-radius: 1rem;
+  }
+
+  .md\:pr-8 {
+    padding-right: 2rem;
   }
 }
 
@@ -764,6 +793,52 @@ video {
 }
 
 @media (min-width: 1280px) {
+  .xl\:h-max {
+    height: -moz-max-content;
+    height: max-content;
+  }
+
+  .xl\:h-9 {
+    height: 2.25rem;
+  }
+
+  .xl\:h-40 {
+    height: 10rem;
+  }
+
+  .xl\:h-1\/5 {
+    height: 20%;
+  }
+
+  .xl\:h-2\/5 {
+    height: 40%;
+  }
+
+  .xl\:h-2\/6 {
+    height: 33.333333%;
+  }
+
+  .xl\:h-auto {
+    height: auto;
+  }
+
+  .xl\:h-full {
+    height: 100%;
+  }
+
+  .xl\:h-fit {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+
+  .xl\:h-5\/6 {
+    height: 83.333333%;
+  }
+
+  .xl\:min-h-40 {
+    min-height: 10rem;
+  }
+
   .xl\:w-2\/3 {
     width: 66.666667%;
   }
