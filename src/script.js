@@ -1,62 +1,75 @@
 const botaoClear = document.getElementById('clr');
 const botaoSign = document.getElementById('sign');
 const botaoPercentage = document.getElementById('porc');
+const botaoSum = document.getElementById('sum');
+const botaoMinus = document.getElementById('minus');
 const botaoMul = document.getElementById('mul');
 const botaoDivision = document.getElementById('div');
-const botaoMinus = document.getElementById('minus');
-const botaoComma = document.getElementById('Comma');
 const botaoEql = document.getElementById('eql');
 let display = document.getElementById('display');
-const botaoSum = document.getElementById('sum');
-// const botao7 = document.getElementById('7');
-// const botao8 = document.getElementById('8');
-// const botao9 = document.getElementById('9');
-// const botao4 = document.getElementById('4');
-// const botao5 = document.getElementById('5');
-// const botao6 = document.getElementById('6');
-// const botao1 = document.getElementById('1');
-// const botao2 = document.getElementById('2');
-// const botao3 = document.getElementById('3');
-// const botao0 = document.getElementById('0');
+const botaoComma = document.getElementById('Comma');
+
+const botaoFunction = document.querySelectorAll('[id^="func"]');
 const botaoNumero = document.querySelectorAll('[id^="num"]');
 
-
-let numeroDisplay = "0";
+let Display = "0";
+let numeroDigitado = "";
 let primeiroNum = 0;
 let segundoNum= 0;
 let estado = "";
 
-// botao1.addEventListener('click', () =>{numeroDisplay+="1", atualizar_Display()})
-// botao2.addEventListener('click', ()=>{numeroDisplay +="2", atualizar_Display()})
-// botao3.addEventListener('click', ()=>{numeroDisplay +="3", atualizar_Display()})
-// botao4.addEventListener('click', ()=>{numeroDisplay +="4", atualizar_Display()})
-// botao5.addEventListener('click', ()=>{numeroDisplay +="5", atualizar_Display()})
-// botao6.addEventListener('click', ()=>{numeroDisplay +="6", atualizar_Display()})
-// botao7.addEventListener('click', ()=>{numeroDisplay +="7", atualizar_Display()})
-// botao8.addEventListener('click', ()=>{numeroDisplay +="8", atualizar_Display()})
-// botao9.addEventListener('click', ()=>{numeroDisplay +="9", atualizar_Display()})
-// botao0.addEventListener('click', ()=>{if(numeroDisplay != ""){numeroDisplay+="0"}
-//     atualizar_Display();
-// })
+botaoFunction.forEach(botao => {
+
+    botao.addEventListener('click', ()=>{
+        if(botao.id == "funcSign"){
+            primeiroNum = parseFloat(numeroDigitado) * (-1);
+            numeroDigitado = primeiroNum.toLocaleString("pt-BR");
+            Display = numeroDigitado;
+            atualizar_Display();
+        }
+    })
+})
 
 botaoNumero.forEach(botao => {
-    botao.addEventListener('click', ()=>{
-
-        if(numeroDisplay=="0" && botao.textContent!="0"){
-            numeroDisplay = "";
-            numeroDisplay += botao.textContent;
-            atualizar_Display();
-    } else {
-        numeroDisplay+=botao.textContent;
+    botao.addEventListener('click', () => {
+        // Verifica se o botão pressionado é uma vírgula
+        if (botao.textContent === ',') {
+            if (!numeroDigitado.includes('.')) {
+                numeroDigitado += '.';  // Adiciona vírgula apenas se não existir
+                Display = formatarNumero(numeroDigitado);
+            }
+        } else {
+            // Adiciona dígitos normalmente, mas limita dígitos após a vírgula
+            if (numeroDigitado.includes('.')) {
+                const partes = numeroDigitado.split('.');
+                if (partes[1].length < 4) {
+                    numeroDigitado += botao.textContent;
+                }
+            } else {
+                numeroDigitado += botao.textContent;
+            }
+            Display = formatarNumero(numeroDigitado);
+        }
         atualizar_Display();
-    }
-    })
+    });
 });
 
-botaoClear.addEventListener('click', ()=> {numeroDisplay = "0", atualizar_Display()})
+botaoClear.addEventListener('click', ()=> {Display = "0", numeroDigitado = "", atualizar_Display()})
+
+function formatarNumero(numero) {
+    if (numero.includes('.')) {
+        const partes = numero.split('.');
+        let parteInteira = partes[0].replace(/\./g, '');
+        let parteDecimal = partes[1] || '';
+        let formatado = parseInt(parteInteira).toLocaleString('pt-BR');
+        return parteDecimal.length > 0 ? formatado + ',' + parteDecimal : formatado + ',';
+    } else {
+        return parseInt(numero.replace(/\./g, '')).toLocaleString('pt-BR');
+    }
+}
 
 function atualizar_Display(){
-    display.textContent = numeroDisplay;
+    display.textContent = Display;
 }
 
 function soma(){
