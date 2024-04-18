@@ -13,6 +13,11 @@ module.exports = {
       },
       orange: '#FF9500',
     },
+    extend:{
+      screens:{
+        '3xl': '2100px',
+      }
+    },
   },
   plugins: [],
 }
