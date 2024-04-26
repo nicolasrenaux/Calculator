@@ -27,6 +27,19 @@ botaoFunction.forEach(botao => {
             Display = numeroDigitado;
             atualizar_Display();
         }
+
+        if(botao.id == "funcSum"){
+            equal();
+            estado = "soma";
+            numeroDigitado = "";
+            }
+
+        if(botao.id == "funcEql"){
+            equal();
+            estado = "";
+            numeroDigitado = "";
+            console.log("Clicou no botao igual. Estado: ", estado, "primeiroNum: ", primeiroNum, "SegundoNum: ", segundoNum)
+        }
     })
 })
 
@@ -50,11 +63,12 @@ botaoNumero.forEach(botao => {
             }
             Display = formatarNumero(numeroDigitado);
         }
+        console.log(numeroDigitado);
         atualizar_Display();
     });
 });
 
-botaoClear.addEventListener('click', ()=> {Display = "0", numeroDigitado = "", atualizar_Display()})
+botaoClear.addEventListener('click', ()=> {Display = "0", numeroDigitado = "",primeiroNum = 0, segundoNum = 0, estado = "", atualizar_Display()})
 
 function formatarNumero(numero) {
     if (numero.includes('.')) {
@@ -72,5 +86,22 @@ function atualizar_Display(){
     display.textContent = Display;
 }
 
-function soma(){
+function equal() {
+    switch (estado) {
+        case "":
+            // primeiroNum += parseFloat(numeroDigitado);
+            numeroDigitado != "" ? primeiroNum = parseFloat(numeroDigitado) : primeiroNum;
+            console.log("Entrou no switch estado vazio e atribuiu o primeiroNum para ", primeiroNum)
+            break;
+        case "soma":
+            // segundoNum = parseFloat(numeroDigitado);
+            numeroDigitado != "" ? segundoNum = parseFloat(numeroDigitado) : segundoNum;
+            primeiroNum += segundoNum;
+            console.log("Entrou no switch soma, segundoNum: ", segundoNum, " primeiroNum: ", primeiroNum)
+            break;
+        // Adicione outros casos para subtração, multiplicação, etc., conforme necessário
+    }
+    // Atualiza o display com o resultado
+    Display = formatarNumero(primeiroNum.toLocaleString("pt-BR"));
+    atualizar_Display();
 }
