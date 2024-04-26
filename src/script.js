@@ -1,13 +1,7 @@
 const botaoClear = document.getElementById('clr');
-const botaoSign = document.getElementById('sign');
-const botaoPercentage = document.getElementById('porc');
-const botaoSum = document.getElementById('sum');
-const botaoMinus = document.getElementById('minus');
-const botaoMul = document.getElementById('mul');
-const botaoDivision = document.getElementById('div');
-const botaoEql = document.getElementById('eql');
+botaoClear.addEventListener('click', ()=> {Display = "0", numeroDigitado = "",primeiroNum = 0, segundoNum = 0, estado = "", atualizar_Display()})
+
 let display = document.getElementById('display');
-const botaoComma = document.getElementById('Comma');
 
 const botaoFunction = document.querySelectorAll('[id^="func"]');
 const botaoNumero = document.querySelectorAll('[id^="num"]');
@@ -40,6 +34,25 @@ botaoFunction.forEach(botao => {
             numeroDigitado = "";
             console.log("Clicou no botao igual. Estado: ", estado, "primeiroNum: ", primeiroNum, "SegundoNum: ", segundoNum)
         }
+
+        if(botao.id == "funcMinus"){
+            equal();
+            estado = "min";
+            numeroDigitado = "";
+        }
+
+        if(botao.id == "funcMul"){
+            equal();
+            estado= "mul"
+            numeroDigitado = "";
+        }
+
+        if(botao.id == "funcDiv"){
+            equal();
+            estado = "div";
+            numeroDigitado = "";
+        }
+
     })
 })
 
@@ -68,7 +81,6 @@ botaoNumero.forEach(botao => {
     });
 });
 
-botaoClear.addEventListener('click', ()=> {Display = "0", numeroDigitado = "",primeiroNum = 0, segundoNum = 0, estado = "", atualizar_Display()})
 
 function formatarNumero(numero) {
     if (numero.includes('.')) {
@@ -89,17 +101,29 @@ function atualizar_Display(){
 function equal() {
     switch (estado) {
         case "":
-            // primeiroNum += parseFloat(numeroDigitado);
             numeroDigitado != "" ? primeiroNum = parseFloat(numeroDigitado) : primeiroNum;
             console.log("Entrou no switch estado vazio e atribuiu o primeiroNum para ", primeiroNum)
             break;
         case "soma":
-            // segundoNum = parseFloat(numeroDigitado);
             numeroDigitado != "" ? segundoNum = parseFloat(numeroDigitado) : segundoNum;
             primeiroNum += segundoNum;
             console.log("Entrou no switch soma, segundoNum: ", segundoNum, " primeiroNum: ", primeiroNum)
             break;
-        // Adicione outros casos para subtração, multiplicação, etc., conforme necessário
+        case "min":
+            numeroDigitado != "" ? segundoNum = parseFloat(numeroDigitado) : segundoNum;
+            primeiroNum -= segundoNum;
+            console.log("Entrou no switch soma, segundoNum: ", segundoNum, " primeiroNum: ", primeiroNum)
+            break;
+        case "mul":
+            numeroDigitado != "" ? segundoNum = parseFloat(numeroDigitado) : segundoNum;
+            primeiroNum *= segundoNum;
+            console.log("Entrou no switch mul, segundoNum: ", segundoNum, " primeiroNum: ", primeiroNum)
+            break;
+        case "div":
+            numeroDigitado != "" ? segundoNum = parseFloat(numeroDigitado) : segundoNum;
+            primeiroNum /= segundoNum;
+            console.log("Entrou no switch div, segundoNum: ", segundoNum, " primeiroNum: ", primeiroNum)
+            break;
     }
     // Atualiza o display com o resultado
     Display = formatarNumero(primeiroNum.toLocaleString("pt-BR"));
