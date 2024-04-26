@@ -27,14 +27,13 @@ botaoFunction.forEach(botao => {
             if(estado == "" && primeiroNum === 0){
                 primeiroNum = parseFloat(numeroDigitado)/ 100;
                 Display = primeiroNum.toString();
-                console.log("Eu te odeio")
                 atualizar_Display();
             } else if (estado==""){
                 primeiroNum /= 100;
             } else {
                 segundoNum = primeiroNum*(parseFloat(numeroDigitado)/100);
                 numeroDigitado = segundoNum.toLocaleString("pt-BR");
-                Display = formatarNumero(numeroDigitado);
+                Display = numeroDigitado;
                 atualizar_Display();
             }
             
