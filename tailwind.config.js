@@ -9,7 +9,9 @@ module.exports = {
       pureblack: '#000000',
       gray:{
         light: '#D4D4D2',
-        dark: '#505050'
+        dark: '#505050',
+        clickNum: '#848484',
+        clickOp: '#F8F8F8'
       },
       orange: '#FF9500',
     },

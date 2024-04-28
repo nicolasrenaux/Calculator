@@ -657,6 +657,11 @@ video {
   background-color: rgb(28 28 28 / var(--tw-bg-opacity));
 }
 
+.bg-gray-clickOp {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 248 248 / var(--tw-bg-opacity));
+}
+
 .bg-gray-dark {
   --tw-bg-opacity: 1;
   background-color: rgb(80 80 80 / var(--tw-bg-opacity));
@@ -675,6 +680,11 @@ video {
 .bg-orange {
   --tw-bg-opacity: 1;
   background-color: rgb(255 149 0 / var(--tw-bg-opacity));
+}
+
+.bg-gray-clickNum {
+  --tw-bg-opacity: 1;
+  background-color: rgb(132 132 132 / var(--tw-bg-opacity));
 }
 
 .p-3 {
@@ -715,6 +725,16 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-500 {
+  transition-duration: 500ms;
 }
 
 @media (min-width: 768px) {

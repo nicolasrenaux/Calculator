@@ -1,6 +1,11 @@
 const botaoClear = document.getElementById('clr');
 botaoClear.addEventListener('click', ()=> {Display = "0", numeroDigitado = "",primeiroNum = 0, segundoNum = 0, estado = "", atualizar_Display()})
 
+const corOriginalNum = 'bg-gray-dark';
+const corAlteradaNum = 'bg-gray-clickNum';
+const corOriginalOp = 'bg-gray-light';
+const corAlteradaOp = 'bg-gray-clickOp';
+
 let display = document.getElementById('display');
 
 const botaoFunction = document.querySelectorAll('[id^="func"]');
@@ -74,8 +79,10 @@ botaoFunction.forEach(botao => {
 })
 
 botaoNumero.forEach(botao => {
+    
     botao.addEventListener('click', () => {
         // Verifica se o botão pressionado é uma vírgula
+        
         if (botao.textContent === ',') {
             if (!numeroDigitado.includes('.')) {
                 numeroDigitado += '.';  // Adiciona vírgula apenas se não existir
