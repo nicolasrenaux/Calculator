@@ -143,6 +143,6 @@ function equal() {
             break;
     }
     // Atualiza o display com o resultado
-    Display = formatarNumero(primeiroNum.toLocaleString("pt-BR"));
+    Display = primeiroNum.toLocaleString("pt-BR");
     atualizar_Display();
 }
