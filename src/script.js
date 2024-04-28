@@ -93,7 +93,6 @@ botaoNumero.forEach(botao => {
             }
             Display = formatarNumero(numeroDigitado);
         }
-        console.log(numeroDigitado);
         atualizar_Display();
     });
 });
@@ -119,27 +118,30 @@ function equal() {
     switch (estado) {
         case "":
             numeroDigitado != "" ? primeiroNum = parseFloat(numeroDigitado) : primeiroNum;
-            console.log("Entrou no switch estado vazio e atribuiu o primeiroNum para ", primeiroNum)
             break;
         case "soma":
             numeroDigitado != "" ? segundoNum = parseFloat(numeroDigitado) : segundoNum;
             primeiroNum += segundoNum;
-            console.log("Entrou no switch soma, segundoNum: ", segundoNum, " primeiroNum: ", primeiroNum)
             break;
         case "min":
             numeroDigitado != "" ? segundoNum = parseFloat(numeroDigitado) : segundoNum;
             primeiroNum -= segundoNum;
-            console.log("Entrou no switch soma, segundoNum: ", segundoNum, " primeiroNum: ", primeiroNum)
             break;
         case "mul":
             numeroDigitado != "" ? segundoNum = parseFloat(numeroDigitado) : segundoNum;
             primeiroNum *= segundoNum;
-            console.log("Entrou no switch mul, segundoNum: ", segundoNum, " primeiroNum: ", primeiroNum)
             break;
         case "div":
             numeroDigitado != "" ? segundoNum = parseFloat(numeroDigitado) : segundoNum;
-            primeiroNum /= segundoNum;
-            console.log("Entrou no switch div, segundoNum: ", segundoNum, " primeiroNum: ", primeiroNum)
+            if (segundoNum === 0) {
+                Display = "Erro";
+                primeiroNum = 0;
+                numeroDigitado = 0;
+                segundoNum = 0;
+                return atualizar_Display();
+            } else {
+                primeiroNum /= segundoNum;
+            }
             break;
     }
     // Atualiza o display com o resultado
