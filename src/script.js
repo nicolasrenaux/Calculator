@@ -9,6 +9,11 @@ botaoClear.addEventListener('click', ()=> {
     setTimeout(()=>{
         botaoClear.classList.replace('bg-gray-clickOp','bg-gray-light')
     }, 200);
+
+    botaoFunction.forEach(botao => {
+        botao.classList.replace('bg-white', 'bg-orange')
+        botao.classList.replace('text-orange', 'text-white')
+    })
     atualizar_Display()})
 
 const corOriginalNum = 'bg-gray-dark';
@@ -63,6 +68,9 @@ botaoFunction.forEach(botao => {
             }, 200);
         }
 
+        botao.classList.replace('bg-orange', 'bg-white')
+        botao.classList.replace('text-white', 'text-orange')
+
         if(botao.id == "funcSum"){
             equal();
             estado = "soma";
@@ -73,6 +81,12 @@ botaoFunction.forEach(botao => {
             equal();
             estado = "";
             numeroDigitado = "";
+            botao.classList.replace('bg-orange', 'bg-white');
+            botao.classList.replace('text-white', 'text-orange');
+            setTimeout(() => {
+                botao.classList.replace('bg-white', 'bg-orange');
+                botao.classList.replace('text-orange', 'text-white');
+            }, 200);
             console.log("Clicou no botao igual. Estado: ", estado, "primeiroNum: ", primeiroNum, "SegundoNum: ", segundoNum)
         }
 
@@ -100,8 +114,12 @@ botaoFunction.forEach(botao => {
 botaoNumero.forEach(botao => {
     
     botao.addEventListener('click', () => {
-        // Verifica se o botão pressionado é uma vírgula
         botao.classList.replace('bg-gray-dark', 'bg-gray-clickNum');
+        botaoFunction.forEach(botao => {
+            botao.classList.replace('bg-white', 'bg-orange')
+            botao.classList.replace('text-orange', 'text-white')
+        })
+        // Verifica se o botão pressionado é uma vírgula
         if (botao.textContent === ',') {
             if (!numeroDigitado.includes('.')) {
                 numeroDigitado += '.';  // Adiciona vírgula apenas se não existir
