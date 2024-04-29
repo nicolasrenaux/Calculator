@@ -1,5 +1,15 @@
 const botaoClear = document.getElementById('clr');
-botaoClear.addEventListener('click', ()=> {Display = "0", numeroDigitado = "",primeiroNum = 0, segundoNum = 0, estado = "", atualizar_Display()})
+botaoClear.addEventListener('click', ()=> {
+    Display = "0";
+    numeroDigitado = "";
+    primeiroNum = 0;
+    segundoNum = 0; 
+    estado = "";
+    botaoClear.classList.replace('bg-gray-light', 'bg-gray-clickOp')
+    setTimeout(()=>{
+        botaoClear.classList.replace('bg-gray-clickOp','bg-gray-light')
+    }, 200);
+    atualizar_Display()})
 
 const corOriginalNum = 'bg-gray-dark';
 const corAlteradaNum = 'bg-gray-clickNum';
@@ -21,14 +31,20 @@ botaoFunction.forEach(botao => {
 
     botao.addEventListener('click', ()=>{
         if(botao.id == "funcSign"){
+            botao.classList.replace('bg-gray-light', 'bg-gray-clickOp');
             primeiroNum = parseFloat(numeroDigitado) * (-1);
             numeroDigitado = primeiroNum.toLocaleString("pt-BR");
             Display = numeroDigitado;
             atualizar_Display();
+            setTimeout(() => {
+                botao.classList.replace('bg-gray-clickOp', 'bg-gray-light');
+            }, 200);
         }
 
         if(botao.id == "funcPerc"){
             // estado == "" && primeiroNum === 0 ? primeiroNum = parseFloat(numeroDigitado)/ 100 : estado != "" ? primeiroNum /= 100: segundoNum = primeiroNum*(parseFloat(numeroDigitado)/100);
+            botao.classList.replace('bg-gray-light', 'bg-gray-clickOp');
+            if(Display!="0"){
             if(estado == "" && primeiroNum === 0){
                 primeiroNum = parseFloat(numeroDigitado)/ 100;
                 Display = primeiroNum.toString();
@@ -40,8 +56,11 @@ botaoFunction.forEach(botao => {
                 numeroDigitado = segundoNum.toLocaleString("pt-BR");
                 Display = numeroDigitado;
                 atualizar_Display();
+                }
             }
-            
+            setTimeout(() => {
+                botao.classList.replace('bg-gray-clickOp', 'bg-gray-light');
+            }, 200);
         }
 
         if(botao.id == "funcSum"){
@@ -82,7 +101,7 @@ botaoNumero.forEach(botao => {
     
     botao.addEventListener('click', () => {
         // Verifica se o botão pressionado é uma vírgula
-        
+        botao.classList.replace('bg-gray-dark', 'bg-gray-clickNum');
         if (botao.textContent === ',') {
             if (!numeroDigitado.includes('.')) {
                 numeroDigitado += '.';  // Adiciona vírgula apenas se não existir
@@ -100,6 +119,9 @@ botaoNumero.forEach(botao => {
             }
             Display = formatarNumero(numeroDigitado);
         }
+        setTimeout(() => {
+            botao.classList.replace('bg-gray-clickNum', 'bg-gray-dark');
+        }, 200);
         atualizar_Display();
     });
 });
