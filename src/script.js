@@ -35,6 +35,15 @@ let estado = "";
 botaoFunction.forEach(botao => {
 
     botao.addEventListener('click', ()=>{
+
+        
+        botaoFunction.forEach(botao=>{
+            botao.classList.replace('bg-white', 'bg-orange')
+            botao.classList.replace('text-orange', 'text-white')
+        })
+
+
+
         if(botao.id == "funcSign"){
             botao.classList.replace('bg-gray-light', 'bg-gray-clickOp');
             primeiroNum = parseFloat(numeroDigitado) * (-1);
